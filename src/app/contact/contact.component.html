@@ -1,0 +1,35 @@
+<!-- <style>
+    html{
+      scrollbar-width: normal;
+      scrollbar-color: red green;
+    }
+  </style>
+<h1 class="text-center"> Contact Me </h1>
+
+<form>
+    <div class="center">
+        <input type="text" class="width" id = "email" placeholder="Please enter email"
+        name="email" [formControl]="emailFormControl" />
+        <br>
+        <textarea rows="10" cols="50" placeholder="Enter Message" [formControl]="messageFormControl"></textarea>
+        <br>
+        <button id = "submit" (click)="register()" class = "myButton"> Submit </button>
+        <div>
+            <br>
+        </div>
+    </div>
+</form> -->
+
+<form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()">
+  Name
+  <input [formControl]="name" required>
+  Email
+  <input [formControl]="email" placeholder="email@example.com" required>
+  Message
+  <textarea [formControl]="message" maxlength="256" placeholder="I'm interested in..." required></textarea>
+  <button [disabled]="isLoading" class="submit" type="submit">Submit</button>
+  <input [formControl]="honeypot" class="hidden" type="text" />
+  <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
+    <span>{{responseMessage}}</span>
+  </div>
+</form>
